@@ -1,0 +1,65 @@
+.content-main {
+  margin-top: 20px;
+  background-color: #155e75;
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Cambio de dirección de fila a columna */
+  justify-content: center;
+  align-items: center; /* Alineación vertical */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Drop-Photo {
+  background-color: rgb(205, 207, 211);
+  border-width: 5px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.enviar {
+  background-color: rgb(0, 0, 0);
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 20px; /* Ajusta el margen superior para centrar verticalmente */
+}
+
+.texto {
+  padding: 65px;
+  width: 250px;
+  text-align: center;
+  z-index: 1;
+}
+
+.photo-container {
+  position: relative;
+}
+
+.edit-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.image-icone {
+  width: 20px;
+  height: 20px;
+}

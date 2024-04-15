@@ -1,0 +1,22 @@
+.container-publi {
+    margin-top: 20px;
+    display: flex;
+  }
+  
+  .amigos-container {
+    flex: 1; /* Ocupa todo el espacio disponible */
+  }
+  
+  .publications-container {
+    margin-left: 0px; /* Ajusta el espacio entre los contenedores si es necesario */
+  }
+  
+  .publications {
+   margin-right: 50px;
+  }
+
+  .frater-department-wrapper{
+    
+  }
+  
+  

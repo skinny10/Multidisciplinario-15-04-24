@@ -1,0 +1,16 @@
+.content-main-perfil {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .PhotoPerfil {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .Publication {
+    flex: 1;
+    margin-top: 20px;
+  }

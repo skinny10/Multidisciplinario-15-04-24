@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  background-size: contain; /* Ajusta el tamaño de la imagen para que quepa dentro del contenedor sin distorsionarla */
+  background-position: center; /* Centra la imagen horizontalmente */
+  background-position-y: 100px; /* Mueve la imagen hacia arriba en 10 píxeles (puedes ajustar este valor según sea necesario) */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  /* Otras propiedades de estilo, como colores de texto y márgenes */
+}

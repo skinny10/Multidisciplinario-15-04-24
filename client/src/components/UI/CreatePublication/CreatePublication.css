@@ -1,0 +1,142 @@
+#publicacion {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 10px;
+    margin-left: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px  rgb(8 47 73);
+  }
+  
+  .perfil-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .perfil-user img {
+    width: 40px; /* Tamaño ajustado de la imagen de perfil */
+    height: 40px; /* Tamaño ajustado de la imagen de perfil */
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .perfil-user span {
+    font-size: 16px; /* Tamaño del nombre del usuario */
+  }
+  
+  .text-input textarea {
+    width: calc(100% - 20px); /* Para ajustar el textarea al 100% menos el padding */
+    margin-bottom: 10px;
+    resize: vertical; /* Permitir el redimensionamiento vertical */
+  }
+  
+  .subir-imagenes {
+    margin-bottom: 10px;
+  }
+  
+  .button-subir-images {
+   justify-content: center;
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropzone-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dropzone-content {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+    height: 500px;
+  }
+  
+  .Drop-Photo {
+    width: 200px; /* Ancho del dropzone */
+    height: 200px; /* Alto del dropzone */
+    border: 2px dashed #cccccc; /* Borde discontinuo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Drop-Photo p {
+    margin: 0;
+  }
+  
+  .publicar {
+    background-color: rgb(79, 70, 229);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .opciones-subir-imagenes {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+  }
+  
+  .imagen-previsualizacion {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .imagen-preview {
+    max-width: 50%; /* Ajusta el ancho máximo de cada imagen */
+    margin-right: 10px; /* Espacio entre las imágenes */
+    margin-bottom: 10px; /* Espacio entre las filas de imágenes */
+  }
+  
+  .content-images {
+    justify-content: center;
+    margin-top: 10px;
+    display: flex; /* Cambia el botón a un contenedor flex */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    min-width: 150px;
+    height: 40px; 
+    background-color: #164e63;
+    border-radius: 5px;
+  }
+  
+  .icono-images {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto */
+  }
+
+  .texto-placeholder{
+    height: 40px;
+    border-radius: 5px;
+  }
+  
+  .content-drop{
+    margin-top: 25px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #164e63;
+    border-radius: 5px;
+  }
+
+  .text-input{
+    margin-top: 10px;
+    padding: 100px;
+  }
+
+ 

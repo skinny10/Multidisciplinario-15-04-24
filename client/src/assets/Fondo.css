@@ -1,0 +1,13 @@
+/* TuComponente.css */
+.content-form {
+  margin-top: 0px;
+  background-image: url('./Img/fondo.png'); /* Asegúrate de ajustar la ruta al archivo de imagen */
+  background-size: cover; /* Otra propiedad para ajustar la forma en que la imagen se ajusta al contenedor */
+
+}
+
+.content-login {
+  margin-top: 0px;
+  background-image: url('./Img/fondo.png'); /* Asegúrate de ajustar la ruta al archivo de imagen */
+  background-size: cover
+}

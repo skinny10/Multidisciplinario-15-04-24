@@ -1,0 +1,67 @@
+.frater-department {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 650px;
+    position: relative; /* Agregamos esta propiedad */
+    margin-right: 65px;
+  }
+  
+  .frater-image {
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .amenities {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+  
+  .amenity {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0 10px;
+  }
+  
+  .amenity img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+  
+  .social-links {
+    display: flex;
+    position: absolute; /* Agregamos esta propiedad */
+    right: 20px; /* Agregamos esta propiedad */
+    top: 20px; /* Agregamos esta propiedad */
+  }
+  
+  .social-link {
+    color: #333;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+    margin-top: 490px;
+  }
+  
+  .social-link:hover {
+    color: #0f295f;
+  }
+
+  .redes{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 90px;
+  }
