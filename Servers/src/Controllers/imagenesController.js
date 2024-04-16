@@ -9,8 +9,10 @@ const esquema = new mongoose.Schema({
   fecha: Date,
   facebook: String,
   whatsapp: String,
-  instagram: String
+  instagram: String,
+  userdueno: String,
 }, { versionKey: false });
+
 
 // Creación del modelo
 const ImagenesModel = mongoose.model('imagenes', esquema);
@@ -29,7 +31,7 @@ export const getImagenes = async (req, res) => {
 // Función para guardar imágenes
 export const saveImagenes = async (req, res) => {
   try {
-    const { nombre, fecha, texto, facebook, whatsapp, instagram } = req.body;
+    const { nombre, fecha, texto, facebook, whatsapp, instagram, userdueno } = req.body;
     const validacion = validar(nombre, texto, fecha, req.file, 'Y');
     if (validacion.length === 0) {
       const nuevaImagen = new ImagenesModel({
@@ -39,7 +41,8 @@ export const saveImagenes = async (req, res) => {
         imagen: '/uploads/' + req.file.filename,
         facebook: facebook,
         whatsapp: whatsapp,
-        instagram: instagram
+        instagram: instagram,
+        userdueno: userdueno
       });
       await nuevaImagen.save();
       return res.status(200).json({ status: true, message: 'Imagen guardada' });
@@ -55,12 +58,12 @@ export const saveImagenes = async (req, res) => {
 export const updateImagenes = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, fecha, texto, facebook, whatsapp, instagram } = req.body;
+    const { nombre, fecha, texto, facebook, whatsapp, instagram, userdueno } = req.body;
     let imagen = '';
-    let valores = { nombre: nombre, texto: texto, fecha: fecha, facebook: facebook, whatsapp: whatsapp, instagram: instagram };
+    let valores = { nombre: nombre, texto: texto, fecha: fecha, facebook: facebook, whatsapp: whatsapp, instagram: instagram, userdueno: userdueno };
     if (req.file != null) {
       imagen = '/uploads/' + req.file.filename;
-      valores = { nombre: nombre, texto: texto, fecha: fecha, imagen: imagen, facebook: facebook, whatsapp: whatsapp, instagram: instagram };
+      valores = { nombre: nombre, texto: texto, fecha: fecha, imagen: imagen, facebook: facebook, whatsapp: whatsapp, instagram: instagram, userdueno: userdueno };
     }
     const validacion = validar(nombre, texto, fecha);
     if (validacion.length === 0) {

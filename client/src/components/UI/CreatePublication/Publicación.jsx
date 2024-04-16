@@ -1,14 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import CreatePublication from './CreatePublication';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "../CreatePublication/Publicacion.css"
-import { useAuth } from '../../../context/authContext';
+import { useAuth} from '../../../context/authContext';
+import { Dialog, Transition } from '@headlessui/react';
 
 export default function Publicación() {
+  const [userData, setUserData] = useState([]);
   const [publicaciones, setPublicaciones] = useState([]);
   const { isAuthenticated, user } = useAuth();
   console.log(isAuthenticated, user)
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleDelete = () => {
+    setPublicaciones(publicaciones);
+    setIsDialogOpen(true);
+  };
+
+
+  const confirmDelete = async () => {
+    try {
+      if (!publicaciones) {
+        console.error('No user selected for deletion');
+        return;
+      }
+
+      const apiUrl = `http://localhost:4000/api/auth/users/${publicaciones}`;
+
+      const response = await fetch(apiUrl, { method: 'DELETE' });
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete user: ${response.status}`);
+      }
+
+      setPublicaciones(userData.filter((user) => user._id !== selectedUserId));
+
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
 
 
   useEffect(() => {
@@ -50,9 +84,16 @@ export default function Publicación() {
                       className="w-64 h-64 object-cover object-center"
                     />
                     <div className="p-4 w-1/2">
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="bg-red-500 text-white hover:bg-red-700 px-3 py-2 rounded-md mx-1 mt-2"
+                    >
+                      Eliminar
+                    </button>
+
                       <h2 className="text-xl font-semibold mb-2 text-left">{publicacion.nombre}</h2>
                       <p className="text-gray-700 mb-8 mr-14">{publicacion.texto}</p>
-                      <p className="text-gray-800 text-sm text-left mt--20"> {isAuthenticated && user && user.username}  </p>
+                      <p className="text-gray-800 text-sm text-left mt--20"> {isAuthenticated && user && publicacion.userdueno}  </p>
                       <p className="text-gray-500 text-sm text-left mt--20">
                         Fecha: {new Date(publicacion.fecha).toLocaleDateString()}
                       </p>
@@ -88,6 +129,71 @@ export default function Publicación() {
           </div>
         </main>
       </div>
+
+      <Transition show={isDialogOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={() => setIsDialogOpen(false)}
+        >
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+            </Transition.Child>
+
+            <span className="inline-block h-screen align-middle">&#8203;</span>
+
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-black shadow-xl rounded-2xl text-white">
+                <Dialog.Title
+                  as="h3"
+                  className="text-lg font-medium leading-6"
+                >
+                  Confirmar eliminación
+                </Dialog.Title>
+                <div className="mt-2">
+                  <p className="text-sm">
+                    ¿Estás seguro de que deseas eliminar este usuario?
+                  </p>
+                </div>
+
+                <div className="mt-4">
+                  <button
+                    type="button"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    onClick={confirmDelete}
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-3 inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-transparent rounded-md hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    onClick={() => setIsDialogOpen(false)}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
     </div>
   );
 }

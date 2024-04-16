@@ -3,8 +3,10 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './CreatePublication.css';
+import { useAuth } from '../../../context/authContext';
 
 function CreatePublication() {
+  const { user, } = useAuth();
   const [nombre, setNombre] = useState('');
   const [texto, setTexto] = useState('');
   const [fecha, setFecha] = useState('');
@@ -12,6 +14,9 @@ function CreatePublication() {
   const [facebook, setFacebook] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [instagram, setInstagram] = useState('');
+  const [userdueno, setUserDueno] = useState(user.username);
+  console.log(user.username)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +29,7 @@ function CreatePublication() {
       formData.append('facebook', facebook);
       formData.append('whatsapp', whatsapp);
       formData.append('instagram', instagram);
+      formData.append('userdueno', userdueno);
 
       await axios.post('http://localhost:5000/api/imagenes', formData, {
         headers: {
@@ -45,6 +51,7 @@ function CreatePublication() {
       setFacebook('');
       setWhatsapp('');
       setInstagram('');
+      setUserDueno(user.username);
     } catch (error) {
       console.error('Error al enviar el formulario:', error.message);
       Swal.fire({
